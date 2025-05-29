@@ -41,5 +41,5 @@
       "response_path": "result"
     }
   },
-  "source_code": "def calculator(a: float, b: float, operation: str) -> float:\n    if operation == 'add':\n        return a + b\n    elif operation == 'subtract':\n        return a - b\n    elif operation == 'multiply':\n        return a * b\n    elif operation == 'divide':\n        return a / b if b != 0 else float('inf')\n    else:\n        raise ValueError('Unsupported operation')"
-
+  "source_code": "def calculator(a: float, b: float, operation: str) -> float:\\n    if operation == 'add':\\n        return a + b\\n    elif operation == 'subtract':\\n        return a - b\\n    elif operation == 'multiply':\\n        return a * b\\n    elif operation == 'divide':\\n        return a / b if b != 0 else float('inf')\\n    else:\\n        raise ValueError('Unsupported operation')"
+}
