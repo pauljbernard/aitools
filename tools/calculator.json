@@ -43,6 +43,4 @@
   },
 source: "import re\n\ndef calculator(input_data) -> float:\n    def perform_operation(a: float, b: float, operator: str) -> float:\n        if operator in ['x', '*']:\n            return a * b\n        elif operator == '/':\n            return a / b if b != 0 else float('inf')\n        elif operator == '+':\n            return a + b\n        elif operator == '-':\n            return a - b\n        else:\n            raise ValueError(f\"Unsupported operation: {operator}\")\n\n    if isinstance(input_data, dict) and all(k in input_data for k in [\"a\", \"b\", \"operation\"]):\n        a = float(input_data[\"a\"])\n        b = float(input_data[\"b\"])\n        op = input_data[\"operation\"]\n        return perform_operation(a, b, op)\n\n    # Fallback: try to parse a single string input like \"7 * 3\"\n    if isinstance(input_data, str):\n        input_data = input_data.strip().lower()\n        pattern = r'^\\s*([-+]?\\d*\\.?\\d+)\\s*([x\\*/\\-\\+])\\s*([-+]?\\d*\\.?\\d+)\\s*$'\n        match = re.match(pattern, input_data)\n        if match:\n            a = float(match.group(1))\n            op = match.group(2)\n            b = float(match.group(3))\n            return perform_operation(a, b, op)\n\n    raise ValueError(f\"Invalid input format: {input_data}\")"
 }
-    ]
-  }
-}
+   
