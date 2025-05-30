@@ -41,4 +41,5 @@
       "response_path": "result"
     }
   },
-"source_code": "def calculator(**kwargs) -> float:\\n    a = kwargs.get(\\\"a\\\")\\n    b = kwargs.get(\\\"b\\\")\\n    operation = kwargs.get(\\\"operation\\\")\\n\\n    if a is None or b is None or operation is None:\\n        raise ValueError(\\\"Missing one or more required arguments: 'a', 'b', 'operation'\\\")\\n\\n    if operation == \\\"add\\\":\\n        return a + b\\n    elif operation == \\\"subtract\\\":\\n        return a - b\\n    elif operation == \\\"multiply\\\":\\n        return a * b\\n    elif operation == \\\"divide\\\":\\n        return a / b if b != 0 else float(\\\"inf\\\")\\n    else:\\n        raise ValueError(\\\"Unsupported operation\\\")"}
+"source_code": "def calculator(input_str: str) -> float:\\n    try:\\n        parts = [p.strip().strip('\"') for p in input_str.split(',')]\\n        a = float(parts[0])\\n        b = float(parts[1])\\n        op = parts[2]\\n        if op == 'add':\\n            return a + b\\n        elif op == 'subtract':\\n            return a - b\\n        elif op == 'multiply':\\n            return a * b\\n        elif op == 'divide':\\n            return a / b if b != 0 else float('inf')\\n        else:\\n            return 'Unsupported operation'\\n    except Exception as e:\\n        return f'Error: {e}'"
+}
