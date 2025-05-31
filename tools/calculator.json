@@ -1,46 +1,7 @@
 {
   "name": "calculator",
-  "description": "Performs basic arithmetic on two numbers.",
-  "type": "tool",
-  "backend": "openai",
-  "tool_type": "function",
-  "bindings": {
-    "openai": {
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "a": {
-            "type": "number",
-            "description": "The first operand"
-          },
-          "b": {
-            "type": "number",
-            "description": "The second operand"
-          },
-          "operation": {
-            "type": "string",
-            "enum": ["add", "subtract", "multiply", "divide"],
-            "description": "The operation to perform"
-          }
-        },
-        "required": ["a", "b", "operation"]
-      },
-      "function": "calculator"
-    },
-    "mcp": {
-      "endpoint": "http://mcp.internal/api/calculate",
-      "method": "POST",
-      "headers": {
-        "Authorization": "Bearer ${MCP_TOKEN}"
-      },
-      "payload_template": {
-        "operand1": "${input.a}",
-        "operand2": "${input.b}",
-        "operator": "${input.operation}"
-      },
-      "response_path": "result"
-    }
-  },
-source: "import re\n\ndef calculator(input_data) -> float:\n    def perform_operation(a: float, b: float, operator: str) -> float:\n        if operator in ['x', '*']:\n            return a * b\n        elif operator == '/':\n            return a / b if b != 0 else float('inf')\n        elif operator == '+':\n            return a + b\n        elif operator == '-':\n            return a - b\n        else:\n            raise ValueError(f\"Unsupported operation: {operator}\")\n\n    if isinstance(input_data, dict) and all(k in input_data for k in [\"a\", \"b\", \"operation\"]):\n        a = float(input_data[\"a\"])\n        b = float(input_data[\"b\"])\n        op = input_data[\"operation\"]\n        return perform_operation(a, b, op)\n\n    # Fallback: try to parse a single string input like \"7 * 3\"\n    if isinstance(input_data, str):\n        input_data = input_data.strip().lower()\n        pattern = r'^\\s*([-+]?\\d*\\.?\\d+)\\s*([x\\*/\\-\\+])\\s*([-+]?\\d*\\.?\\d+)\\s*$'\n        match = re.match(pattern, input_data)\n        if match:\n            a = float(match.group(1))\n            op = match.group(2)\n            b = float(match.group(3))\n            return perform_operation(a, b, op)\n\n    raise ValueError(f\"Invalid input format: {input_data}\")"
+  "description": "A simple calculator",
+  "source_file": "calculator.py",
+  "usage_instructions": "Enter two numbers and an operation (add, subtract, multiply, divide) separated by commas. Example: '5,3,add'"
 }
    
