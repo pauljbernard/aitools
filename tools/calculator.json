@@ -2,16 +2,9 @@
   "name": "calculator",
   "description": "A simple calculator",
   "source_file": "calculator.py",
-  "usage_instructions": "Enter two numbers and an operation (add, subtract, multiply, divide) separated by commas. Example: '5,3,add'"
-}
-
-{
-  "name": "calculator",
-  "description": "A simple calculator",
-  "source_file": "calculator.py",
   "usage_instructions": "Enter two numbers and an operation (add, subtract, multiply, divide) separated by commas. Example: '5,3,add'",
   "category": "tool_category",
   "tags": ["tag1", "tag2"],
-  "input_requirements": "Description of expected inputs"
+  "input_requirements": "simple math string like "7 * 3" or "12.5 / 5"
 }
    
