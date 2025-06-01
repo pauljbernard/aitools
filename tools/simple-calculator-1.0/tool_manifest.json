@@ -1,6 +1,6 @@
 {
   "name": "calculator",
-  "description": "A simple calculator",
+  "description": ""A tool that can calculate or evaluate math expressions. Accepts inputs like '1 + 2', '5 * 3', or structured data with numbers and operations."",
   "source_file": "calculator.py",
   "usage_instructions": "Enter two numbers and an operation (add, subtract, multiply, divide) separated by commas. Example: '5,3,add'",
   "category": "tool_category",
